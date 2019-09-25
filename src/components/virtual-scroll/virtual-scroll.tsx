@@ -147,7 +147,8 @@ export class VirtualScroll {
     let itemTo = Math.min(this.itemCount, itemFrom + nCol * nRow);
     let iCol = 0;
     let iRow = 0;
-    let children: VNode[] = new Array(itemTo - itemFrom + 1);
+    // itemFrom > itemTo when the number of items reduced when scrolled to lower part
+    let children: VNode[] = itemFrom > itemTo ? [] : new Array(itemTo - itemFrom + 1);
     for (let i = itemFrom; i < itemTo; i++) {
       let x = itemWidth * iCol;
       let y = itemHeight * iRow;

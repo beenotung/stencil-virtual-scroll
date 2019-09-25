@@ -26,3 +26,5 @@ UserInterfaceState.xcuserstate
 .env
 package-lock.json
 pnpm-lock.yaml
+
+*.tgz

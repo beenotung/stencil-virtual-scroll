@@ -1,6 +1,6 @@
 {
   "name": "stencil-virtual-scroll",
-  "version": "0.0.1",
+  "version": "0.0.1-doc",
   "description": "virtual-scroll typed web component that only render visible items on the DOM",
   "author": "Beeno Tung <https://beeno-tung.surge.sh>",
   "license": "BSD-2-Clause",

@@ -1,9 +1,25 @@
 # stencil-virtual-scroll
 
-virtual-scroll web component that only render visible items on the DOM
+virtual-scroll typed web component that only render visible items on the DOM
 
-[![npm Package Version](https://img.shields.io/npm/v/@beenotung/tslib.svg?maxAge=2592000)](https://www.npmjs.com/package/@beenotung/tslib)
+[![npm Package Version](https://img.shields.io/npm/v/stencil-virtual-scroll.svg?maxAge=2592000)](https://www.npmjs.com/package/stencil-virtual-scroll)
 ![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)
+
+## Why yet another virtual-scroll component?
+1. The `ion-virtual-scroll` is only documented for Angular;
+   not supported for react;
+   undocumented for javascript (without framework)
+2. The `ion-virtual-scroll` for javascript doesn't allow content before / after it.
+    i.e. It will occupy the entire page. (workaround exist when providing `renderHeader` and `renderFooter`)
+3. The `ion-virtual-scroll` scroll height is not correct.
+   The content height grow as you scroll, resulting 'endless list' feeling.
+
+##### But why naming it stencil-virtual-scroll?
+~~Because virtual-scroll is already occupied on npm.~~
+
+Using this name for now in case people search for stencil style (typed) web component library.
+
+Will rename it when better idea comes in. Welcome suggestions.
 
 ## Features
 - [x] Auto places items based on their size.

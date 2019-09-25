@@ -13,10 +13,10 @@ import {
 export namespace Components {
   interface VirtualScroll {
     'autoDetectSize'?: boolean;
-    'generator': (i: number) => VNode;
     'itemCount': number;
     'itemHeight'?: number;
     'itemWidth'?: number;
+    'renderItem': (i: number) => VNode | string | number | Promise<VNode | string | number>;
     'sameSize'?: boolean;
     'tick'?: any;
   }
@@ -38,10 +38,10 @@ declare global {
 declare namespace LocalJSX {
   interface VirtualScroll extends JSXBase.HTMLAttributes<HTMLVirtualScrollElement> {
     'autoDetectSize'?: boolean;
-    'generator': (i: number) => VNode;
     'itemCount': number;
     'itemHeight'?: number;
     'itemWidth'?: number;
+    'renderItem': (i: number) => VNode | string | number | Promise<VNode | string | number>;
     'sameSize'?: boolean;
     'tick'?: any;
   }

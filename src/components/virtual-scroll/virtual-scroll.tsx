@@ -1,5 +1,6 @@
 import { Watch, Element, State, Prop, Component, h } from '@stencil/core';
 import { VNode } from '@stencil/core/dist/declarations';
+import { ChildType } from '../../../dist/types/stencil.core';
 
 /**
  * the parent should the style of this component, including
@@ -26,7 +27,8 @@ export class VirtualScroll {
   itemCount!: number;
 
   @Prop()
-  renderItem!: (i: number) => VNode | string | number | Promise<VNode | string | number>;
+  renderItem!: (i: number) => ChildType | Promise<ChildType>
+    | ChildType[] | Promise<ChildType[]> | Promise<ChildType>[];
 
   @Prop({ mutable: true })
   itemWidth?: number;

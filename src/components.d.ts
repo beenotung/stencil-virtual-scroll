@@ -7,8 +7,8 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  VNode,
-} from '@stencil/core/dist/declarations';
+  ChildType,
+} from './../dist/types/stencil.core';
 
 export namespace Components {
   interface VirtualScroll {
@@ -16,7 +16,8 @@ export namespace Components {
     'itemCount': number;
     'itemHeight'?: number;
     'itemWidth'?: number;
-    'renderItem': (i: number) => VNode | string | number | Promise<VNode | string | number>;
+    'renderItem': (i: number) => ChildType | Promise<ChildType>
+    | ChildType[] | Promise<ChildType[]> | Promise<ChildType>[];
     'sameSize'?: boolean;
     'tick'?: any;
   }
@@ -41,7 +42,8 @@ declare namespace LocalJSX {
     'itemCount': number;
     'itemHeight'?: number;
     'itemWidth'?: number;
-    'renderItem': (i: number) => VNode | string | number | Promise<VNode | string | number>;
+    'renderItem': (i: number) => ChildType | Promise<ChildType>
+    | ChildType[] | Promise<ChildType[]> | Promise<ChildType>[];
     'sameSize'?: boolean;
     'tick'?: any;
   }

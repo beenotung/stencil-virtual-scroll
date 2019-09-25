@@ -26,7 +26,7 @@ export class VirtualScroll {
   itemCount!: number;
 
   @Prop()
-  generator!: (i: number) => VNode;
+  renderItem!: (i: number) => VNode | string | number | Promise<VNode | string | number>;
 
   @Prop({ mutable: true })
   itemWidth?: number;
@@ -68,7 +68,7 @@ export class VirtualScroll {
 
   renderMeasure() {
     requestAnimationFrame(() => (this.tick = {}));
-    return <div ref={el => (this.container = el)}>{this.generator(0)}</div>;
+    return <div ref={el => (this.container = el)}>{this.renderItem(0)}</div>;
   }
 
   getItemDimension(): { itemWidth: number; itemHeight: number } | undefined {
@@ -161,7 +161,7 @@ export class VirtualScroll {
             height: this.itemHeight + 'px',
           }}
         >
-          {this.generator(i)}
+          {this.renderItem(i)}
         </div>
       );
       children[slot] = child;
@@ -173,26 +173,26 @@ export class VirtualScroll {
     }
 
     return [
-        <div
-          // to capture scroll action
-          class="scroller"
-          style={{
-            height: totalNRow * itemHeight + 'px',
-            width: W + 'px',
-          }}
-        />,
-        <div
-          // to display payload
-          class="item-container"
-          style={{
-            paddingTop: this.scrollTop - offsetTop + 'px',
-            height: totalNRow * itemHeight + 'px',
-            left: -W + 'px',
-          }}
-          ref={el => (this.container = el)}
-        >
-          {children}
-        </div>
-    ]
+      <div
+        // to capture scroll action
+        class="scroller"
+        style={{
+          height: totalNRow * itemHeight + 'px',
+          width: W + 'px',
+        }}
+      />,
+      <div
+        // to display payload
+        class="item-container"
+        style={{
+          paddingTop: this.scrollTop - offsetTop + 'px',
+          height: totalNRow * itemHeight + 'px',
+          left: -W + 'px',
+        }}
+        ref={el => (this.container = el)}
+      >
+        {children}
+      </div>,
+    ];
   }
 }

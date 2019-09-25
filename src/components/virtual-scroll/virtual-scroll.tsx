@@ -26,7 +26,7 @@ export class VirtualScroll {
   itemCount!: number;
 
   @Prop()
-  renderItem!: (i: number) => VNode;
+  renderItem!: (i: number) => VNode | string | number | Promise<VNode | string | number>;
 
   @Prop({ mutable: true })
   itemWidth?: number;
@@ -173,26 +173,26 @@ export class VirtualScroll {
     }
 
     return [
-        <div
-          // to capture scroll action
-          class="scroller"
-          style={{
-            height: totalNRow * itemHeight + 'px',
-            width: W + 'px',
-          }}
-        />,
-        <div
-          // to display payload
-          class="item-container"
-          style={{
-            paddingTop: this.scrollTop - offsetTop + 'px',
-            height: totalNRow * itemHeight + 'px',
-            left: -W + 'px',
-          }}
-          ref={el => (this.container = el)}
-        >
-          {children}
-        </div>
-    ]
+      <div
+        // to capture scroll action
+        class="scroller"
+        style={{
+          height: totalNRow * itemHeight + 'px',
+          width: W + 'px',
+        }}
+      />,
+      <div
+        // to display payload
+        class="item-container"
+        style={{
+          paddingTop: this.scrollTop - offsetTop + 'px',
+          height: totalNRow * itemHeight + 'px',
+          left: -W + 'px',
+        }}
+        ref={el => (this.container = el)}
+      >
+        {children}
+      </div>,
+    ];
   }
 }

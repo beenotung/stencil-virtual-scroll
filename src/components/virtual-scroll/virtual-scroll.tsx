@@ -26,7 +26,7 @@ export class VirtualScroll {
   itemCount!: number;
 
   @Prop()
-  generator!: (i: number) => VNode;
+  renderItem!: (i: number) => VNode;
 
   @Prop({ mutable: true })
   itemWidth?: number;
@@ -68,7 +68,7 @@ export class VirtualScroll {
 
   renderMeasure() {
     requestAnimationFrame(() => (this.tick = {}));
-    return <div ref={el => (this.container = el)}>{this.generator(0)}</div>;
+    return <div ref={el => (this.container = el)}>{this.renderItem(0)}</div>;
   }
 
   getItemDimension(): { itemWidth: number; itemHeight: number } | undefined {
@@ -161,7 +161,7 @@ export class VirtualScroll {
             height: this.itemHeight + 'px',
           }}
         >
-          {this.generator(i)}
+          {this.renderItem(i)}
         </div>
       );
       children[slot] = child;

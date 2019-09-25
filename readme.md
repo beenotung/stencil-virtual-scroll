@@ -43,7 +43,7 @@ export class AppDev {
   render() {
     let virtualScroll: Components.VirtualScroll = {
       itemCount: 100000,
-      generator: (i: number) => <img src={`https://via.placeholder.com/600/${i}`}/>,
+      renderItem: (i: number) => <img src={`https://via.placeholder.com/600/${i}`}/>,
       itemWidth: 48,
       itemHeight: 48,
     };

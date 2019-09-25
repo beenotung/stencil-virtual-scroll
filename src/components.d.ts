@@ -36,7 +36,7 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface VirtualScroll extends JSXBase.HTMLAttributes<HTMLVirtualScrollElement> {
+  interface VirtualScroll {
     'autoDetectSize'?: boolean;
     'itemCount': number;
     'itemHeight'?: number;
@@ -56,7 +56,9 @@ export { LocalJSX as JSX };
 
 declare module "@stencil/core" {
   export namespace JSX {
-    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+    interface IntrinsicElements {
+      'virtual-scroll': LocalJSX.VirtualScroll & JSXBase.HTMLAttributes<HTMLVirtualScrollElement>;
+    }
   }
 }
 

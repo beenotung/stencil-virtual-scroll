@@ -8,9 +8,10 @@ virtual-scroll typed web component that only render visible items on the DOM
 ## Why yet another virtual-scroll component?
 1. The `ion-virtual-scroll` is only documented for Angular;
    not supported for react;
-   undocumented for javascript (without framework)
-2. The `ion-virtual-scroll` for javascript doesn't allow content before / after it.
-    i.e. It will occupy the entire page. (workaround exist when providing `renderHeader` and `renderFooter`)
+   undocumented and untyped for Javascript/Typescript (without framework)
+2. The `ion-virtual-scroll` for Javascript doesn't allow content before / after it.
+   i.e. It will occupy the entire page.
+   (Workaround exist when providing `renderHeader` and `renderFooter` but still limiting the comsumer component structure)
 3. The `ion-virtual-scroll` scroll height is not correct.
    The content height grow as you scroll, resulting 'endless list' feeling.
 
@@ -28,9 +29,8 @@ Will rename it when better idea comes in. Welcome suggestions.
 - [x] Allow lazy loading items instead of constructing a huge array
 - [x] Written in Typescript
 
-## Example with type hints on Props
+## Example with typed hints on Props
 ```typescript jsx
-import { Components } from 'stencil-virtual-scroll'; // for types, no effect on the generated js
 import 'stencil-virtual-scroll'; // still need to import the library (js)
 
 @Component({
@@ -41,17 +41,14 @@ import 'stencil-virtual-scroll'; // still need to import the library (js)
 export class AppDev {
 
   render() {
-    let virtualScroll: Components.VirtualScroll = {
-      itemCount: 100000,
-      renderItem: (i: number) => <img src={`https://via.placeholder.com/600/${i}`}/>,
-      itemWidth: 48,
-      itemHeight: 48,
-    };
     return (
       <div>
         before
         <virtual-scroll
-          {...virtualScroll}
+          itemCount={100000}
+          renderItem={i => <img src={`https://via.placeholder.com/600/${i}`}/>}
+          itemWidth={48}
+          itemHeight={48}
           style={{
             display: 'block',
             width: '100%',

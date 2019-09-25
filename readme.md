@@ -25,6 +25,7 @@ Will rename it when better idea comes in. Welcome suggestions.
 - [x] Auto places items based on their size.
 - [x] Support multiple columns in a row if the item width is smaller than the half of container width
 - [x] Allow parent to instruct the container to re-render when updated
+- [x] Allow lazy loading items instead of constructing a huge array
 - [x] Written in Typescript
 
 ## Example with type hints on Props

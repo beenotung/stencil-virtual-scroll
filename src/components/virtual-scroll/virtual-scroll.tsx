@@ -1,6 +1,5 @@
 import { Watch, Element, State, Prop, Component, h } from '@stencil/core';
-import { VNode } from '@stencil/core/dist/declarations';
-import { ChildType } from '../../../dist/types/stencil.core';
+import type { VNode, ChildType } from '@stencil/core/internal';
 
 /**
  * the parent should the style of this component, including

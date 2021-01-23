@@ -53,7 +53,7 @@ export class VirtualScroll {
   };
 
   @Watch('itemCount')
-  @Watch('generator')
+  @Watch('renderItem')
   @Watch('itemWidth')
   @Watch('itemHeight')
   handlePropUpdate() {

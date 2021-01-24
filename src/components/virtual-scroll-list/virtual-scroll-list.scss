@@ -1,0 +1,18 @@
+:host {
+  overflow: scroll;
+
+  // to provide scroll height
+  .scroller {
+    display: inline-block;
+  }
+
+  .item-container {
+    position: relative;
+    display: inline-block;
+
+    // to fly around for scrolling effect
+    .item {
+      position: absolute;
+    }
+  }
+}

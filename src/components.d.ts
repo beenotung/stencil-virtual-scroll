@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ChildType } from "@stencil/core/internal";
+import { ChildType as ChildType1 } from "@stencil/core/internal/index";
 export namespace Components {
     interface StencilVirtualScrollDemo {
     }
@@ -20,6 +21,15 @@ export namespace Components {
         "tick"?: any;
     }
     interface VirtualScrollDemo {
+    }
+    interface VirtualScrollList {
+        "estimatedItemHeight": number;
+        "itemCount": number;
+        "itemHeights": number[];
+        "itemWidth": number;
+        "renderItem": (i: number) => ChildType | Promise<ChildType> | ChildType[] | Promise<ChildType[]> | Promise<ChildType>[];
+    }
+    interface VirtualScrollListDemo {
     }
 }
 declare global {
@@ -41,10 +51,24 @@ declare global {
         prototype: HTMLVirtualScrollDemoElement;
         new (): HTMLVirtualScrollDemoElement;
     };
+    interface HTMLVirtualScrollListElement extends Components.VirtualScrollList, HTMLStencilElement {
+    }
+    var HTMLVirtualScrollListElement: {
+        prototype: HTMLVirtualScrollListElement;
+        new (): HTMLVirtualScrollListElement;
+    };
+    interface HTMLVirtualScrollListDemoElement extends Components.VirtualScrollListDemo, HTMLStencilElement {
+    }
+    var HTMLVirtualScrollListDemoElement: {
+        prototype: HTMLVirtualScrollListDemoElement;
+        new (): HTMLVirtualScrollListDemoElement;
+    };
     interface HTMLElementTagNameMap {
         "stencil-virtual-scroll-demo": HTMLStencilVirtualScrollDemoElement;
         "virtual-scroll": HTMLVirtualScrollElement;
         "virtual-scroll-demo": HTMLVirtualScrollDemoElement;
+        "virtual-scroll-list": HTMLVirtualScrollListElement;
+        "virtual-scroll-list-demo": HTMLVirtualScrollListDemoElement;
     }
 }
 declare namespace LocalJSX {
@@ -62,10 +86,21 @@ declare namespace LocalJSX {
     }
     interface VirtualScrollDemo {
     }
+    interface VirtualScrollList {
+        "estimatedItemHeight": number;
+        "itemCount": number;
+        "itemHeights": number[];
+        "itemWidth": number;
+        "renderItem": (i: number) => ChildType | Promise<ChildType> | ChildType[] | Promise<ChildType[]> | Promise<ChildType>[];
+    }
+    interface VirtualScrollListDemo {
+    }
     interface IntrinsicElements {
         "stencil-virtual-scroll-demo": StencilVirtualScrollDemo;
         "virtual-scroll": VirtualScroll;
         "virtual-scroll-demo": VirtualScrollDemo;
+        "virtual-scroll-list": VirtualScrollList;
+        "virtual-scroll-list-demo": VirtualScrollListDemo;
     }
 }
 export { LocalJSX as JSX };
@@ -75,6 +110,8 @@ declare module "@stencil/core" {
             "stencil-virtual-scroll-demo": LocalJSX.StencilVirtualScrollDemo & JSXBase.HTMLAttributes<HTMLStencilVirtualScrollDemoElement>;
             "virtual-scroll": LocalJSX.VirtualScroll & JSXBase.HTMLAttributes<HTMLVirtualScrollElement>;
             "virtual-scroll-demo": LocalJSX.VirtualScrollDemo & JSXBase.HTMLAttributes<HTMLVirtualScrollDemoElement>;
+            "virtual-scroll-list": LocalJSX.VirtualScrollList & JSXBase.HTMLAttributes<HTMLVirtualScrollListElement>;
+            "virtual-scroll-list-demo": LocalJSX.VirtualScrollListDemo & JSXBase.HTMLAttributes<HTMLVirtualScrollListDemoElement>;
         }
     }
 }

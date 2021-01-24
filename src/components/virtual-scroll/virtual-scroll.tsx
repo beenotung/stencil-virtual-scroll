@@ -120,53 +120,38 @@ export class VirtualScroll {
       return this.renderMeasure();
     }
     let { itemWidth, itemHeight } = itemDimension;
-
-    // create item in visible viewport
-    let offsetTop = this.scrollTop % itemHeight;
+    let scrollTop = this.scrollTop;
     let W = this.host.clientWidth;
     let H = this.host.clientHeight;
+    let N = this.itemCount;
     let nCol = Math.floor(W / itemWidth);
     // total number of row for all items, for scrollbar height
-    let totalNRow = Math.ceil(this.itemCount / nCol);
-    let nRowBefore = Math.floor(this.scrollTop / itemHeight);
-    // maximum number of row to be displayed
-    let nRow = Math.ceil(H / itemHeight);
+    let totalNRow = Math.ceil(N / nCol);
+    let nRowBefore = Math.floor(scrollTop / itemHeight);
+    // amount of non visible heights of first row above the viewport
+    let offsetTop = scrollTop % itemHeight;
+    // amount of rows in viewport
+    let nRow = Math.ceil((H + offsetTop) / itemHeight);
 
-    // left over space in the viewport after last complete item
-    let usedSpace: number = nRow * itemHeight - offsetTop;
-    if (usedSpace < H) {
-      nRow++;
-    }
-
-    let itemFrom = nRowBefore * nCol;
-    let itemTo = Math.min(this.itemCount, itemFrom + nCol * nRow);
-    let iCol = 0;
-    let iRow = 0;
-    // itemFrom > itemTo when the number of items reduced when scrolled to lower part
-    let children: VNode[] = itemFrom > itemTo ? [] : new Array(itemTo - itemFrom + 1);
-    for (let i = itemFrom; i < itemTo; i++) {
-      let x = itemWidth * iCol;
-      let y = itemHeight * iRow;
-      let slot = i % (nCol * Math.ceil(H / itemHeight + 1));
-      let child = (
-        <div
-          class="item"
-          style={{
-            transform: `translate(${x}px,${y}px)`,
-            width: this.itemWidth + 'px',
-            height: this.itemHeight + 'px',
-          }}
-        >
-          {this.renderItem(i)}
-        </div>
-      );
-      children[slot] = child;
-      iCol++;
-      if (iCol === nCol) {
-        iCol = 0;
-        iRow++;
+    let children: VNode[] = [];
+    main:
+      for (let iRow = nRowBefore; iRow < nRowBefore + nRow; iRow++) {
+        for (let iCol = 0; iCol < nCol; iCol++) {
+          let i = iRow * nCol + iCol;
+          if (i >= N) break main;
+          let x = itemWidth * iCol;
+          let y = itemHeight * iRow;
+          children.push(<div
+            class='item'
+            style={{
+              transform: `translate(${x}px,${y}px)`,
+              width: itemWidth + 'px',
+              height: itemHeight + 'px',
+            }}>
+            {this.renderItem(i)}
+          </div>);
+        }
       }
-    }
 
     return [
       <div
@@ -181,7 +166,6 @@ export class VirtualScroll {
         // to display payload
         class="item-container"
         style={{
-          paddingTop: this.scrollTop - offsetTop + 'px',
           height: totalNRow * itemHeight + 'px',
           left: -W + 'px',
         }}
@@ -191,5 +175,4 @@ export class VirtualScroll {
       </div>,
     ];
   }
-
 }

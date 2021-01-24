@@ -1,5 +1,5 @@
-import { Watch, Element, State, Prop, Component, h } from '@stencil/core';
-import type { VNode, ChildType } from '@stencil/core/internal';
+import { Watch, Element, State, Prop, Component, h, VNode } from '@stencil/core';
+import { ChildType } from '@stencil/core/internal';
 
 /**
  * the parent should the style of this component, including
@@ -13,6 +13,7 @@ import type { VNode, ChildType } from '@stencil/core/internal';
   scoped: true,
 })
 export class VirtualScroll {
+
   @Element()
   host!: HTMLElement;
 
@@ -120,13 +121,6 @@ export class VirtualScroll {
     }
     let { itemWidth, itemHeight } = itemDimension;
 
-    // let child = this.container.children.item(0);
-    // if (!child) {
-    //   return this.renderMeasure();
-    // }
-    // this.itemWidth = child.clientWidth;
-    // this.itemHeight = child.clientHeight;
-
     // create item in visible viewport
     let offsetTop = this.scrollTop % itemHeight;
     let W = this.host.clientWidth;
@@ -197,4 +191,5 @@ export class VirtualScroll {
       </div>,
     ];
   }
+
 }

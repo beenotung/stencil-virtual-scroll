@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ChildType } from "@stencil/core/internal";
 export namespace Components {
+    interface StencilVirtualScrollDemo {
+    }
     interface VirtualScroll {
         "autoDetectSize"?: boolean;
         "itemCount": number;
@@ -17,19 +19,37 @@ export namespace Components {
         "sameSize"?: boolean;
         "tick"?: any;
     }
+    interface VirtualScrollDemo {
+    }
 }
 declare global {
+    interface HTMLStencilVirtualScrollDemoElement extends Components.StencilVirtualScrollDemo, HTMLStencilElement {
+    }
+    var HTMLStencilVirtualScrollDemoElement: {
+        prototype: HTMLStencilVirtualScrollDemoElement;
+        new (): HTMLStencilVirtualScrollDemoElement;
+    };
     interface HTMLVirtualScrollElement extends Components.VirtualScroll, HTMLStencilElement {
     }
     var HTMLVirtualScrollElement: {
         prototype: HTMLVirtualScrollElement;
         new (): HTMLVirtualScrollElement;
     };
+    interface HTMLVirtualScrollDemoElement extends Components.VirtualScrollDemo, HTMLStencilElement {
+    }
+    var HTMLVirtualScrollDemoElement: {
+        prototype: HTMLVirtualScrollDemoElement;
+        new (): HTMLVirtualScrollDemoElement;
+    };
     interface HTMLElementTagNameMap {
+        "stencil-virtual-scroll-demo": HTMLStencilVirtualScrollDemoElement;
         "virtual-scroll": HTMLVirtualScrollElement;
+        "virtual-scroll-demo": HTMLVirtualScrollDemoElement;
     }
 }
 declare namespace LocalJSX {
+    interface StencilVirtualScrollDemo {
+    }
     interface VirtualScroll {
         "autoDetectSize"?: boolean;
         "itemCount": number;
@@ -40,15 +60,21 @@ declare namespace LocalJSX {
         "sameSize"?: boolean;
         "tick"?: any;
     }
+    interface VirtualScrollDemo {
+    }
     interface IntrinsicElements {
+        "stencil-virtual-scroll-demo": StencilVirtualScrollDemo;
         "virtual-scroll": VirtualScroll;
+        "virtual-scroll-demo": VirtualScrollDemo;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "stencil-virtual-scroll-demo": LocalJSX.StencilVirtualScrollDemo & JSXBase.HTMLAttributes<HTMLStencilVirtualScrollDemoElement>;
             "virtual-scroll": LocalJSX.VirtualScroll & JSXBase.HTMLAttributes<HTMLVirtualScrollElement>;
+            "virtual-scroll-demo": LocalJSX.VirtualScrollDemo & JSXBase.HTMLAttributes<HTMLVirtualScrollDemoElement>;
         }
     }
 }

@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+:host .demo {
+  padding: 1em;
+  outline: 1px solid crimson;
+}

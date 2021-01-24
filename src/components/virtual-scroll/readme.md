@@ -18,6 +18,19 @@
 | `tick`                    | `tick`             |             | `any`                                                                                                                           | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [virtual-scroll-demo](../virtual-scroll-demo)
+
+### Graph
+```mermaid
+graph TD;
+  virtual-scroll-demo --> virtual-scroll
+  style virtual-scroll fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

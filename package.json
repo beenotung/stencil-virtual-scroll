@@ -10,14 +10,14 @@
     "stencil",
     "typescript"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist/index.cjs.js",
+  "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/custom-elements/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/stencil-virtual-scroll/stencil-virtual-scroll.js",
+  "unpkg": "dist/stencil-virtual-scroll/stencil-virtual-scroll.esm.js",
   "files": [
     "dist/",
     "loader/"
@@ -30,7 +30,7 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^1.17.4",
+    "@stencil/core": "^2.3.0",
     "@stencil/sass": "^1.4.1"
   },
   "repository": {

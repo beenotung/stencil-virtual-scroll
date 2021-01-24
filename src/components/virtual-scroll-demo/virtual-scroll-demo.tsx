@@ -3,19 +3,20 @@ import { Component, h, Host } from '@stencil/core';
 @Component({
   tag: 'virtual-scroll-demo',
   styleUrl: 'virtual-scroll-demo.css',
-  scoped: true
+  scoped: true,
 })
 export class VirtualScrollDemo {
 
   render() {
-    const width = 250
-    const height = 150
+    const N = 100000;
+    const width = 250;
+    const height = 150;
     return (
       <Host>
         before
         <virtual-scroll
-          itemCount={100000}
-          renderItem={i => <img src={`https://via.placeholder.com/${width}x${height}/${i}`}/>}
+          itemCount={N}
+          renderItem={i => <img src={`https://via.placeholder.com/${width}x${height}/${i}`} />}
           itemWidth={width}
           itemHeight={height}
           style={{

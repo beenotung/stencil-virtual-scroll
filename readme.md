@@ -22,7 +22,7 @@ Demo: https://virtual-scroll-demo.surge.sh
 
 Using this name for now in case people search for stencil style (typed) web component library.
 
-Will rename it when better idea comes in. Welcome suggestions.
+Might rename it when better idea comes in. Welcome suggestions.
 
 ## Features
 - [x] Auto places items based on their size.
@@ -31,7 +31,18 @@ Will rename it when better idea comes in. Welcome suggestions.
 - [x] Allow lazy loading items instead of constructing a huge array
 - [x] Written in Typescript
 
-## Example with typed hints on Props
+## Components Properties
+- [virtual-scroll](./src/components/virtual-scroll/readme.md)
+- [virtual-scroll-list](./src/components/virtual-scroll-list/readme.md)
+
+## Examples with typed hints on Props
+Below shows some usage examples of <virtual-scroll> and <virtual-scroll-list>.
+
+Details refer to:
+- [stencil-virtual-scroll-demo](./src/components/stencil-virtual-scroll-demo)
+
+### Using <virtual-scroll> for fixed-size cells in grid view:
+
 ```typescript jsx
 import 'stencil-virtual-scroll'; // still need to import the library (js)
 
@@ -67,12 +78,69 @@ export class VirtualScrollDemo {
 }
 ```
 
-Details refer to
-- [stencil-virtual-scroll-demo](./src/components/stencil-virtual-scroll-demo)
+Details refer to:
 - [virtual-scroll-demo](./src/components/virtual-scroll-demo)
+
+### Using <virtual-scroll-list> for vary-height items in list view:
+
+```typescript jsx
+import { Component, h, Host } from '@stencil/core';
+
+const N = 100;
+const height = 50;
+const heights = Array(N).fill(height)
+  .map(height => Math.floor(height * (1 + Math.random() * 2)));
+
+@Component({
+  tag: 'virtual-scroll-list-demo',
+  styleUrl: 'virtual-scroll-list-demo.css',
+  scoped: true,
+})
+export class VirtualScrollListDemo {
+
+  renderItem(i: number) {
+    let height = heights[i];
+    return <div style={{
+      width: '450px',
+      height: height + 'px',
+      outline: '1px solid purple',
+      position: 'relative',
+    }}>
+      {i}
+    </div>;
+  }
+
+  render() {
+    return (
+      <Host>
+        before
+        <virtual-scroll-list
+          itemCount={N}
+          renderItem={i => this.renderItem(i)}
+          itemWidth={width}
+          itemHeights={heights}
+          estimatedItemHeight={height}
+          style={{
+            display: 'block',
+            width: '100%',
+            height: '450px',
+            maxHeight: '80vh',
+            outline: 'blue solid 1px',
+          }}
+        />
+        after
+      </Host>
+    );
+  }
+
+}
+
+```
+
+Details refer to:
 - [virtual-scroll-list-demo](./src/components/virtual-scroll-list-demo)
 
-## Stencil
+## About Stencil
 
 Stencil is a compiler for building fast web apps using Web Components.
 

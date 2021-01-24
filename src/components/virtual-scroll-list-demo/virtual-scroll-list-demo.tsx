@@ -29,7 +29,6 @@ export class VirtualScrollListDemo {
       width: width + 'px',
       height: height + 'px',
       outline: '1px solid ' + color,
-      // backgroundColor: color,
       position: 'relative',
     }}>
       <div style={{
@@ -56,7 +55,6 @@ export class VirtualScrollListDemo {
   }
 
   render() {
-    console.log(heights);
     return (
       <Host>
         before

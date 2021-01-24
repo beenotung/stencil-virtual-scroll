@@ -1,8 +1,8 @@
 import { Component, h, Host } from '@stencil/core';
 
 const N = 100;
-const width = 250;
-const height = 150;
+const width = 450;
+const height = 50;
 const heights = Array(N).fill(height)
   .map(height => Math.floor(height * (1 + Math.random() * 2)));
 const colors = [

@@ -27,11 +27,13 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "upload":"surge www https://virtual-scroll-demo.surge.sh"
   },
   "devDependencies": {
     "@stencil/core": "^2.3.0",
-    "@stencil/sass": "^1.4.1"
+    "@stencil/sass": "^1.4.1",
+    "surge": "^0.23.0"
   },
   "repository": {
     "type": "git",

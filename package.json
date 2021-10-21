@@ -1,6 +1,6 @@
 {
   "name": "stencil-virtual-scroll",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "virtual-scroll typed web component that only render visible items on the DOM",
   "author": "Beeno Tung <https://beeno-tung.surge.sh>",
   "license": "BSD-2-Clause",
@@ -28,7 +28,7 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "upload":"surge www https://virtual-scroll-demo.surge.sh"
+    "upload": "surge www https://virtual-scroll-demo.surge.sh"
   },
   "devDependencies": {
     "@stencil/core": "^2.3.0",
